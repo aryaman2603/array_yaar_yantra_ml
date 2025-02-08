@@ -21,10 +21,11 @@ jobs:
       - name: Install Dependencies
         run: |
           pip install -r requirements.txt
+          pip install jupyter  # Explicitly install Jupyter
 
       - name: Run Jupyter Notebook (Without Output File)
         run: |
-          jupyter nbconvert --to notebook --execute WindmillForecasting.ipynb --inplace
+          python -m jupyter nbconvert --to notebook --execute WindmillForecasting.ipynb --inplace
 
       - name: Commit and Push Updated CSV and Image
         run: |
