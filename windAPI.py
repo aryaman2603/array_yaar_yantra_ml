@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 import pandas as pd
+from io import StringIO
 import requests
 
 app = FastAPI()
@@ -19,7 +20,7 @@ def get_csv_data():
         response.raise_for_status()
         
         # Read CSV into Pandas DataFrame
-        df = pd.read_csv(pd.compat.StringIO(response.text))
+        df = pd.read_csv(StringIO(response.text))
         
         # Convert to JSON
         data_json = df.to_dict(orient="records")
