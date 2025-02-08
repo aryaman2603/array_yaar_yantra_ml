@@ -3,6 +3,17 @@ import pandas as pd
 from io import StringIO
 import requests
 
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all domains (change this in production!)
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow GET, POST, etc.
+    allow_headers=["*"],  # Allow all headers
+)
+
+
 app = FastAPI()
 
 # GitHub Raw CSV URL
