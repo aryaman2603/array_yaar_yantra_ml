@@ -23,7 +23,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run Jupyter Notebook (Without Output File)
-        run: jupyter execute WindmillForecasting.ipynbb
+        run: jupyter execute WindmillForecasting.ipynb
         shell: bash
 
       - name: Commit and Push Updated CSV and Image
