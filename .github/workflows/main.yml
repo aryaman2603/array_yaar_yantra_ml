@@ -1,0 +1,37 @@
+name: Run Windmill Forecasting Notebook
+
+on:
+  schedule:
+    - cron: "0 3 * * *"  # Runs every day at 3 AM UTC
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  run-notebook:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"  # Adjust Python version if needed
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run Jupyter Notebook (Without Output File)
+        run: jupyter execute WindmillForecasting.ipynbb
+        shell: bash
+
+      - name: Commit and Push Updated CSV and Image
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add *.csv *.png  # Add updated CSV and image files
+          git commit -m "Automated update of CSV and image at 3 AM" || echo "No changes to commit"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
