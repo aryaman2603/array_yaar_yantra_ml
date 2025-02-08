@@ -33,8 +33,8 @@ jobs:
 
       - name: Commit and Push Updated CSV and Image
         run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
+          git config --local user.email "ashmansodhi@hotmail.com"
+          git config --local user.name "Ashman Sodhi"
           git add *  # Add updated CSV and image files
           git commit -m "Automated update of CSV and image at 3 AM" || echo "No changes to commit"
           git push
