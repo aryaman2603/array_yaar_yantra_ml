@@ -5,6 +5,9 @@ import requests
 
 from fastapi.middleware.cors import CORSMiddleware
 
+app = FastAPI()
+
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # Allow all domains (change this in production!)
@@ -13,8 +16,6 @@ app.add_middleware(
     allow_headers=["*"],  # Allow all headers
 )
 
-
-app = FastAPI()
 
 # GitHub Raw CSV URL
 CSV_URL = "https://raw.githubusercontent.com/AshmanSodhi/array_yaar_yantra_ml/refs/heads/main/efficiency_data.csv"
