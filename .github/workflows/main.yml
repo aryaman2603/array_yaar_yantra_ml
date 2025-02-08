@@ -35,8 +35,10 @@ jobs:
         run: |
           git config --local user.email "ashmansodhi@hotmail.com"
           git config --local user.name "Ashman Sodhi"
-          git add *  # Add updated CSV and image files
+          git add -A  # Add updated CSV and image files
           git commit -m "Automated update of CSV and image at 3 AM" || echo "No changes to commit"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+      - name: push changes
+          uses: ad-m/github-push-action@v0.6.0
+          with:
+            github_token: ${{ secrets.GH_PAT }}
+            branch: main 
