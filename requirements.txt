@@ -6,3 +6,11 @@ requests-cache
 retry-requests 
 numpy
 openmeteo-requests
+scikit-learn
+nbclient
+keras
+tensorflow
+plotly
+cufflinks
+matplotlib
+seaborn
